@@ -1,20 +1,28 @@
+//we are importing the vue-router library.
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 
+//import a component we’ll use in our routes:
+import EventList from "../views/EventList.vue";
+import EventDetails from "../views/EventDetails.vue";
+import About from "../views/About.vue";
+
+//we use this route:
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "EventList",
+    component: EventList,
+  },
+  {
+    path: "/event/:id", //the syntax for a dynamic segment begins with a colon :
+    name: "EventDetails",
+    props: true,//added props: true here to give the EventDetails component access to this dynamic segment parameter as a prop.
+    component: EventDetails,
   },
   {
     path: "/about",
     name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    component: About,
   },
 ];
 
